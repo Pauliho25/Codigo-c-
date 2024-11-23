@@ -1,0 +1,102 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Clase base: Persona
+class Persona {
+protected:
+    string nombre;
+    int edad;
+
+public:
+    Persona(const string& nombre, int edad) : nombre(nombre), edad(edad) {}
+
+    virtual void mostrarInformacion() const {
+        cout << "Nombre: " << nombre << ", Edad: " << edad << endl;
+    }
+
+    virtual ~Persona() {}
+};
+
+// Clase derivada: Autor (herencia)
+class Autor : public Persona {
+private:
+    string nacionalidad;
+
+public:
+    Autor(const string& nombre, int edad, const string& nacionalidad)
+        : Persona(nombre, edad), nacionalidad(nacionalidad) {}
+
+    void mostrarInformacion() const override {
+        cout << "Autor: " << nombre << ", Edad: " << edad
+             << ", Nacionalidad: " << nacionalidad << endl;
+    }
+
+    string obtenerNombre() const { return nombre; }
+};
+
+// Clase: Libro (composición con Autor)
+class Libro {
+private:
+    string titulo;
+    Autor autor;
+
+public:
+    Libro(const string& titulo, const Autor& autor) : titulo(titulo), autor(autor) {}
+
+    void mostrarInformacion() const {
+        cout << "Libro: " << titulo << endl;
+        autor.mostrarInformacion();
+    }
+
+    string obtenerTitulo() const { return titulo; }
+};
+
+// Clase: Seccion (agregación con Libro)
+class Seccion {
+private:
+    string nombreSeccion;
+    vector<Libro> libros;
+
+public:
+    Seccion(const string& nombreSeccion) : nombreSeccion(nombreSeccion) {}
+
+    void agregarLibro(const Libro& libro) {
+        libros.push_back(libro);
+    }
+
+    void mostrarInformacion() const {
+        cout << "Seccion: " << nombreSeccion << endl;
+        for (const auto& libro : libros) {
+            libro.mostrarInformacion();
+            cout << "------------------" << endl;
+        }
+    }
+};
+
+int main() {
+    // Crear autores
+    Autor autor1("Gabriel Garcia Marquez", 87, "Colombiano");
+    Autor autor2("J.K. Rowling", 55, "Británica");
+
+    // Crear libros (composición)
+    Libro libro1("Cien años de soledad", autor1);
+    Libro libro2("Harry Potter y la piedra filosofal", autor2);
+
+    // Crear secciones (agregación)
+    Seccion seccion1("Ficción");
+    Seccion seccion2("Fantasia");
+
+    // Agregar libros a las secciones
+    seccion1.agregarLibro(libro1);
+    seccion2.agregarLibro(libro2);
+
+    // Mostrar información de las secciones
+    seccion1.mostrarInformacion();
+    cout << "======================" << endl;
+    seccion2.mostrarInformacion();
+
+    return 0;
+}
