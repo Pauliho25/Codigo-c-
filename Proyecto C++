@@ -1,26 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include PERSONA_H
 
 using namespace std;
 
-// Clase base: Persona
-class Persona {
-protected:
-    string nombre;
-    int edad;
-
-public:
-    Persona(const string& nombre, int edad) : nombre(nombre), edad(edad) {}
-
-    virtual void mostrarInformacion() const {
-        cout << "Nombre: " << nombre << ", Edad: " << edad << endl;
-    }
-
-    virtual ~Persona() {}
-};
-
-// Clase derivada: Autor (herencia)
 class Autor : public Persona {
 private:
     string nacionalidad;
@@ -37,7 +21,6 @@ public:
     string obtenerNombre() const { return nombre; }
 };
 
-// Clase: Libro (composición con Autor)
 class Libro {
 private:
     string titulo;
@@ -54,7 +37,6 @@ public:
     string obtenerTitulo() const { return titulo; }
 };
 
-// Clase: Seccion (agregación con Libro)
 class Seccion {
 private:
     string nombreSeccion;
@@ -77,19 +59,15 @@ public:
 };
 
 int main() {
-    // Crear autores
     Autor autor1("Gabriel Garcia Marquez", 87, "Colombiano");
     Autor autor2("J.K. Rowling", 55, "Británica");
 
-    // Crear libros (composición)
     Libro libro1("Cien años de soledad", autor1);
     Libro libro2("Harry Potter y la piedra filosofal", autor2);
 
-    // Crear secciones (agregación)
     Seccion seccion1("Ficción");
     Seccion seccion2("Fantasia");
 
-    // Agregar libros a las secciones
     seccion1.agregarLibro(libro1);
     seccion2.agregarLibro(libro2);
 
