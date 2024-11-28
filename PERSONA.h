@@ -15,4 +15,4 @@ public:
     virtual ~Persona() {}
 };
 
-#endif
+#endif // PERSONA_H
