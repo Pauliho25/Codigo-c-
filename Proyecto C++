@@ -1,30 +1,26 @@
-#include "PERSONA.h"
-#include "autor.h"
-#include "Libro.h"
-#include "Seccion.h"
+#include "Cliente.h"
+#include "Producto.h"
+#include "Carrito.h"
+#include "Transaccion.h"
 
 int main() {
-    // Crear autores
-    Autor autor1("Gabriel Garcia Marquez", 87, "Colombiano");
-    Autor autor2("J.K. Rowling", 55, "Británica");
+    // Crear cliente
+    Cliente cliente1("Juan Perez", "juan.perez@example.com", "Calle Falsa 123");
 
-    // Crear libros
-    Libro libro1("Cien años de soledad", autor1);
-    Libro libro2("Harry Potter y la piedra filosofal", autor2);
+    // Crear productos
+    Producto producto1("Laptop", 1200.00);
+    Producto producto2("Mouse", 25.00);
 
-    // Crear secciones
-    Seccion seccion1("Ficción");
-    Seccion seccion2("Fantasía");
+    // Crear carrito y agregar productos
+    Carrito carrito;
+    carrito.agregarProducto(producto1);
+    carrito.agregarProducto(producto2);
 
-    // Agregar libros a las secciones
-    seccion1.agregarLibro(libro1);
-    seccion2.agregarLibro(libro2);
+    // Crear transaccion
+    Transaccion transaccion(cliente1, carrito);
 
-    // Mostrar información de las secciones
-    seccion1.mostrarInformacion();
-    std::cout << "======================" << std::endl;
-    seccion2.mostrarInformacion();
+    // Mostrar detalles de la transaccion
+    transaccion.mostrarDetalles();
 
     return 0;
 }
-
