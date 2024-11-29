@@ -48,3 +48,7 @@ Este proyecto es una aplicación sencilla de comercio electrónico desarrollada 
 1. Compila el programa utilizando un compilador de C++ compatible con C++11:
    ```bash
    g++ -std=c++11 -o ecommerce main.cpp Usuario.cpp Cliente.cpp Producto.cpp Carrito.cpp Transaccion.cpp
+2. Ejecuta el programa:
+   ```bash
+   ./ecommerce
+
