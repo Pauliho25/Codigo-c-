@@ -1,51 +1,50 @@
-# Sistema de Biblioteca
+# Sistema de Comercio Electrónico para PYMEs
 
 ## Descripción
 
-Un sistema básico de gestión de bibliotecas en **C++**. Este proyecto sirve como base para ampliar y personalizar las busquedas bibliotecarias. 
+Este proyecto es una aplicación sencilla de comercio electrónico desarrollada en **C++**, diseñada para ayudar a las pequeñas y medianas empresas (PYMEs) a iniciarse en el comercio digital. El objetivo es proporcionar una base funcional para gestionar clientes, productos y transacciones, mientras se aprende sobre conceptos fundamentales de programación orientada a objetos (POO).
 
 ---
 
-## Características
+## ¿Qué Hace?
 
-- **Clases y Herencia**: `Persona` (base) y `Autor` (hereda de `Persona`).
-- **Composición**: Los libros (`Libro`) contienen un autor.
-- **Agregación**: Las secciones (`Seccion`) gestionan listas de libros.
-- Organización temática de libros.
+1. **Gestiona Clientes**:
+   - Permite registrar clientes con su nombre, correo electrónico y dirección.
+
+2. **Manejo de Productos**:
+   - Modela productos con atributos como nombre y precio.
+
+3. **Carrito de Compras**:
+   - Los clientes pueden agregar productos a un carrito y calcular el costo total.
+
+4. **Transacciones**:
+   - Genera un resumen detallado de cada compra, mostrando al cliente, los productos y el total a pagar.
 
 ---
 
-## Ejecución
+## ¿Cómo Funciona?
 
-1. Compilar:
+### Clases Principales:
+
+- **Usuario**:
+  Clase base que almacena información básica de un usuario.
+
+- **Cliente**:
+  Extiende la clase `Usuario` y añade una dirección específica.
+
+- **Producto**:
+  Modela un artículo disponible para la venta con nombre y precio.
+
+- **Carrito**:
+  Permite a los clientes agregar varios productos y calcular el total de la compra.
+
+- **Transaccion**:
+  Une al cliente y su carrito, proporcionando detalles de la compra.
+
+---
+
+## ¿Cómo Ejecutarlo?
+
+1. Compila el programa utilizando un compilador de C++ compatible con C++11:
    ```bash
-   g++ -o sistema_biblioteca main.cpp
-   ```
-2. Ejecutar:
-   ```bash
-   ./sistema_biblioteca
-   ```
-
----
-
-## Ejemplo de Salida
-
-```
-Seccion: Ficción
-Libro: Cien años de soledad
-Autor: Gabriel Garcia Marquez, Edad: 87, Nacionalidad: Colombiano
-------------------
-Seccion: Fantasia
-Libro: Harry Potter y la piedra filosofal
-Autor: J.K. Rowling, Edad: 55, Nacionalidad: Británica
-```
-
----
-
-## Ampliaciones Sugeridas
-
-- Búsqueda de libros por autor o título.
-- Guardar y cargar datos desde un archivo.
-- Crear una interfaz interactiva basada en menús.
-
----
+   g++ -std=c++11 -o ecommerce main.cpp Usuario.cpp Cliente.cpp Producto.cpp Carrito.cpp Transaccion.cpp
