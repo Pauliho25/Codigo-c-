@@ -4,22 +4,17 @@
 #include "Transaccion.h"
 
 int main() {
-    // Crear cliente
     Cliente cliente1("Juan Perez", "juan.perez@example.com", "Calle Falsa 123");
 
-    // Crear productos
     Producto producto1("Laptop", 1200.00);
     Producto producto2("Mouse", 25.00);
 
-    // Crear carrito y agregar productos
     Carrito carrito;
     carrito.agregarProducto(producto1);
     carrito.agregarProducto(producto2);
 
-    // Crear transaccion
     Transaccion transaccion(cliente1, carrito);
 
-    // Mostrar detalles de la transaccion
     transaccion.mostrarDetalles();
 
     return 0;
